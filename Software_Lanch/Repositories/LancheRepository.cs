@@ -7,6 +7,10 @@ namespace Software_Lanch.Repositories
 {
     public class LancheRepository
     {
+
+        /// <summary>
+        /// kjfkgfg
+        /// </summary>
         private readonly AppDbContext _context;
         public LancheRepository(AppDbContext context)
         {
