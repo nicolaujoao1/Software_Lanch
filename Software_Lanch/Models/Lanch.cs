@@ -2,6 +2,7 @@
 {
     public class Lanch:Base
     {
+
         public string Nome { get; set; }
         public string DescricaoCurta { get; set; }
         public string DescricaoDetalhada { get; set; }
