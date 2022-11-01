@@ -13,6 +13,7 @@ namespace Software_Lanch.Models
         [MaxLength(200)]
         public string DescricaoCurta { get; set; }
         public string DescricaoDetalhada { get; set; }
+        [Required(ErrorMessage = "Campo obrigatório")]
         public decimal Preco { get; set;    }
         public string ImagemUrl { get; set; }
         public string ImagemThumbnailURL { get; set; }

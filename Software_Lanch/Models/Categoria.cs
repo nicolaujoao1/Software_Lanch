@@ -6,6 +6,7 @@ namespace Software_Lanch.Models
     {
         [Required(ErrorMessage ="Campo obrigatório")]
         public string CategoriaNome { get; set; }
+        [Required(ErrorMessage = "Campo obrigatório")]
         public string Descricao { get; set; }
         public List<Lanch>Lanchs { get; set; }
     }
