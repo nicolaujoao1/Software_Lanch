@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Software_Lanch.Repositories.Interfaces;
+using Software_Lanch.ViewModels;
 
 namespace Software_Lanch.Controllers
 {
@@ -10,7 +11,11 @@ namespace Software_Lanch.Controllers
         public IActionResult Index()
         { 
             var lanches = _lancheRepository.Lanches;
-            return View(lanches);
+            var lanchesListViewModel = new LanchListViewModel();
+            lanchesListViewModel.Lanches=lanches;
+            lanchesListViewModel.CategoriaAtual = "Categoria actual";
+
+            return View(lanchesListViewModel);
         }
     }
 }

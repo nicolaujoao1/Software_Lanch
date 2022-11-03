@@ -1,16 +1,23 @@
-﻿@model IEnumerable<Software_Lanch.Models.Lanch>
+﻿@model LanchListViewModel
 
 <div>
     <h1>Todos os lanches</h1>
 </div>
+<div class="container">
+    <div class="row">
 
-@foreach (var lanch in Model)
-{
-    <div>
-        <h4>@lanch.Nome</h4>
-        <p>
-            <img src="@lanch.ImagemUrl">
-        </p>
-        <h3>Preço:@lanch.Preco.ToString("c")</h3>
+        @foreach (var lanch in Model.Lanches)
+        {
+            <div class="col-sm-4 col-md-4 col-lg-4">
+                <h4>@lanch.Nome</h4>
+                <p>
+                    <img src="@lanch.ImagemUrl" class="img-fluid">
+                </p>
+                <h3>Preço:@lanch.Preco.ToString("c")</h3>
+                <h4>@lanch.Nome</h4>
+                <p>@lanch.DescricaoCurta</p>
+            </div>
+        }
+
     </div>
-}
+</div>
