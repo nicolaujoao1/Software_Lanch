@@ -11,10 +11,10 @@ namespace Software_Lanch.Controllers
         public IActionResult Index()
         { 
             var lanches = _lancheRepository.Lanches;
-            var lanchesListViewModel = new LanchListViewModel();
-            lanchesListViewModel.Lanches=lanches;
-            lanchesListViewModel.CategoriaAtual = "Categoria actual";
-
+            var lanchesListViewModel = new LanchListViewModel() {
+                Lanches = lanches,
+                CategoriaAtual = "Categoria actual"
+            };
             return View(lanchesListViewModel);
         }
     }
