@@ -11,8 +11,8 @@ using Software_Lanch.Context;
 namespace Software_Lanch.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20221101144014_PopularCategoria")]
-    partial class PopularCategoria
+    [Migration("20221101203203_PopulaTabelaCategoria")]
+    partial class PopulaTabelaCategoria
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

@@ -4,7 +4,7 @@
 
 namespace Software_Lanch.Migrations
 {
-    public partial class CreateTables : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

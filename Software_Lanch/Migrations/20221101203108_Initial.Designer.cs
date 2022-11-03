@@ -11,8 +11,8 @@ using Software_Lanch.Context;
 namespace Software_Lanch.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20221101143922_CreateTables")]
-    partial class CreateTables
+    [Migration("20221101203108_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

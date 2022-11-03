@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Software_Lanch.Models.Categoria>
+@{
+    ViewData["Title"] = "Categoria";
+}
+<div class="container">
+    <h1>Categoria dos Produtos</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(op=>op.Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(op=>op.CategoriaNome)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(op=>op.Descricao)
+                </th>
+                <th>
+                    Tarefas
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Categoria categoria in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(op=>categoria.Id)</td>
+                    <td>@Html.DisplayFor(op=>categoria.CategoriaNome)</td>
+                    <td>@Html.DisplayFor(op=>categoria.Descricao)</td>
+                    <td>
+                        <a class="btn btn-primary" asp-action="" asp-route-id="@categoria.Id" asp-controller="Categoria">Delete</a>|
+                        <a class="btn btn-secundary" asp-action="" asp-route-id="@categoria.Id" asp-controller="Categoria">Visualizar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>

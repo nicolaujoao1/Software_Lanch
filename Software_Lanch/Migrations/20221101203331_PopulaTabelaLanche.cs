@@ -4,9 +4,9 @@
 
 namespace Software_Lanch.Migrations
 {
-    public partial class PopularLanche : Migration
+    public partial class PopulaTabelaLanche : Migration
     {
-        protected override void Up(MigrationBuilder migrationBuilder) 
+        protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.Sql("INSERT INTO tbLanche VALUES('Cheese Salada','Pão, hambúrger, ovo, presunto, queijo e batata palha','Delicioso pão de hambúrger com ovo frito;', 12.50,'http://www.macoratti.net/Imagens/lanches/cheesesalada1.jpg','http://www.macoratti.net/Imagens/lanches/cheesesalada1.jpg', 0 ,1,1)");
             migrationBuilder.Sql("INSERT INTO tbLanche VALUES('Misto Quente','Pão, presunto, mussarela e tomate','Delicioso pão francês quentinho na chapa com presunto ', 8.00,'http://www.macoratti.net/Imagens/lanches/mistoquente4.jpg','http://www.macoratti.net/Imagens/lanches/mistoquente4.jpg',0,1,1)");

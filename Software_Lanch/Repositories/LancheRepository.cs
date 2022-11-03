@@ -5,23 +5,16 @@ using Software_Lanch.Repositories.Interfaces;
 
 namespace Software_Lanch.Repositories
 {
-    public class LancheRepository
+    public class LancheRepository : ILanchRepository
     {
-
-        /// <summary>
-        /// kjfkgfg
-        /// </summary>
         private readonly AppDbContext _context;
-        public LancheRepository(AppDbContext context)
-        {
-            _context = context;
-        }
+        public LancheRepository(AppDbContext context) => _context = context;
 
-        public async Task<IEnumerable<Lanch>> Lanches() => await _context.Lanchs.Include(c => c.Categoria).ToListAsync();
+        public IEnumerable<Lanch> Lanches =>_context.Lanchs.Include(c => c.Categoria);
+        public IEnumerable<Lanch> LanchesPreferidos=>_context.Lanchs
+            .Where(l => l.IsLanchPreferido).Include(c => c.Categoria);
 
-
-        public async Task<IEnumerable<Lanch>> LanchesPreferidos() => await _context.Lanchs.Where(l => l.IsLanchPreferido).Include(c => c.Categoria).ToListAsync();
-
-        public async Task<Lanch> GetLancheById(int lancheId) => await _context.Lanchs.FirstOrDefaultAsync(l => l.Id == lancheId);
+        public Lanch GetLancheById(int lancheId)
+        =>_context.Lanchs.FirstOrDefault(l => l.Id == lancheId);
     }
 }

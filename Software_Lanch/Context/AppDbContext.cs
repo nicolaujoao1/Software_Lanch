@@ -5,6 +5,9 @@ namespace Software_Lanch.Context
 {
     public class AppDbContext:DbContext
     {
+        #region Teste
+        public DbSet<Produto> Produtos { get; set; }
+        #endregion
         #region DbSet<T>
         public DbSet<Categoria> Categorias { get; set; }
         public DbSet<Lanch> Lanchs { get; set; }
@@ -14,6 +17,18 @@ namespace Software_Lanch.Context
         #endregion
         protected override void OnModelCreating(ModelBuilder mb)
         {
+
+            mb.Entity<Produto>(prop =>
+            {
+                prop.ToTable("tbProduto");
+                prop.HasKey(op => op.Id);
+                prop.Property(op => op.NomeProduto).HasMaxLength(100).IsRequired();
+                prop.Property(op => op.Preco).HasPrecision(10, 2).IsRequired();
+                prop.Property(op=>op.Quantidade);
+            }
+            );
+             //Popular tabela
+
             mb.Entity<Categoria>(c =>
             {
                 c.ToTable("tbCategoria");
@@ -32,9 +47,9 @@ namespace Software_Lanch.Context
                 l.Property(p => p.CategoriaId).IsRequired();
                     
             });
-            //RELAICIONAMENTO 1:N
-            mb.Entity<Lanch>().
-                HasOne(p => p.Categoria).WithMany(p => p.Lanchs).HasForeignKey(p=>p.CategoriaId);
+            ////RELAICIONAMENTO 1:N
+            //mb.Entity<Lanch>().
+            //    HasOne(p => p.Categoria).WithMany(p => p.Lanchs).HasForeignKey(p=>p.CategoriaId);
 
 
         }

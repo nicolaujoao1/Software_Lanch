@@ -92,6 +92,31 @@ namespace Software_Lanch.Migrations
                     b.ToTable("tbLanche", (string)null);
                 });
 
+            modelBuilder.Entity("Software_Lanch.Models.Produto", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("NomeProduto")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<decimal>("Preco")
+                        .HasPrecision(10, 2)
+                        .HasColumnType("decimal(10,2)");
+
+                    b.Property<int>("Quantidade")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("tbProduto", (string)null);
+                });
+
             modelBuilder.Entity("Software_Lanch.Models.Lanch", b =>
                 {
                     b.HasOne("Software_Lanch.Models.Categoria", "Categoria")

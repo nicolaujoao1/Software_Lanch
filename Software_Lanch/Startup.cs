@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Software_Lanch.Context;
+using Software_Lanch.Repositories;
+using Software_Lanch.Repositories.Interfaces;
 
 namespace Software_Lanch;
 public class Startup
@@ -15,6 +17,8 @@ public class Startup
     public void ConfigureServices(IServiceCollection services)
     {
         services.AddDbContext<AppDbContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+        services.AddTransient<ICategoriaRepository, CategoriaRepository>();
+        services.AddTransient<ILanchRepository,LancheRepository>(); 
         services.AddControllersWithViews();
     }
 

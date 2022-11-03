@@ -4,12 +4,10 @@
 
 namespace Software_Lanch.Migrations
 {
-    public partial class PopularCategoria : Migration
+    public partial class PopulaTabelaCategoria : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-
-
             migrationBuilder.Sql("INSERT INTO tbCategoria VALUES('Normal','Lanche feito com ingredientes normais')");
             migrationBuilder.Sql("INSERT INTO tbCategoria VALUES('Natural','Lanche feito com ingredientes integrais e naturais')");
         }
