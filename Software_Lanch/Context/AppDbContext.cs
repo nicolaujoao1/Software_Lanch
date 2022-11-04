@@ -5,15 +5,14 @@ namespace Software_Lanch.Context
 {
     public class AppDbContext:DbContext
     {
-        #region Teste
-        public DbSet<Produto> Produtos { get; set; }
-        #endregion
+       
         #region DbSet<T>
         public DbSet<Categoria> Categorias { get; set; }
         public DbSet<Lanch> Lanchs { get; set; }
+        public DbSet<CarrinhoCompraItem> CarrinhoCompraItens { get; set; }
         #endregion
         #region Ctor
-            public AppDbContext(DbContextOptions<AppDbContext>option):base(option){ }
+        public AppDbContext(DbContextOptions<AppDbContext>option):base(option){ }
         #endregion
         protected override void OnModelCreating(ModelBuilder mb)
         {
@@ -27,6 +26,12 @@ namespace Software_Lanch.Context
                 prop.Property(op=>op.Quantidade);
             }
             );
+            mb.Entity<CarrinhoCompraItem>(c =>
+            {
+                c.ToTable("tbCarrinhoCompraItem");
+                c.HasKey(p=>p.Id);
+                c.Property(p => p.CarrinhoCompraId).HasMaxLength(200);
+            });
              //Popular tabela
 
             mb.Entity<Categoria>(c =>
