@@ -8,15 +8,7 @@
 
         @foreach (var lanch in Model.Lanches)
         {
-            <div class="col-sm-4 col-md-4 col-lg-4">
-                <h4>@lanch.Nome</h4>
-                <p>
-                    <img src="@lanch.ImagemUrl" class="img-fluid">
-                </p>
-                <h3>Preço:@lanch.Preco.ToString("c")</h3>
-                <h4>@lanch.Nome</h4>
-                <p>@lanch.DescricaoCurta</p>
-            </div>
+            <partial name="_LanchesResumo" for="@lanch"></partial>
         }
 
     </div>
