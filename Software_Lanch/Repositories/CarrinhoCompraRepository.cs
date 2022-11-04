@@ -3,7 +3,7 @@ using Software_Lanch.Models;
 using Software_Lanch.Repositories.Interfaces;
 
 namespace Software_Lanch.Repositories;
-public class CarrinhoCompraRepository:ICarrinhoCompraRepository
+public class CarrinhoCompraRepository:CarrinhoCompra,ICarrinhoCompraRepository
 {
     private readonly AppDbContext _context;
     public CarrinhoCompraRepository(AppDbContext context)
@@ -25,5 +25,26 @@ public class CarrinhoCompraRepository:ICarrinhoCompraRepository
         session.SetString("CarrinhoId", carrinhoId);
         var carrinhoCompra=new CarrinhoCompra() { CarrinhoCompraId = carrinhoId };
         return carrinhoCompra;
+    }
+    public void AdicionarAoCarrinho(Lanch lanch)
+    {
+        var carrinhoCompraItem = _context.CarrinhoCompraItens.SingleOrDefault(
+            s=>s.Lanch.Id==lanch.Id && s.CarrinhoCompraId==CarrinhoCompraId
+            );
+        if(carrinhoCompraItem is null)
+        {
+            carrinhoCompraItem = new CarrinhoCompraItem()
+            {
+                CarrinhoCompraId = CarrinhoCompraId,
+                Lanch = lanch,
+                Quantidade = 1
+            };
+            _context.CarrinhoCompraItens.Add(carrinhoCompraItem);
+        }
+        else
+        {
+            carrinhoCompraItem.Quantidade++;
+        }
+        _context.SaveChanges();
     }
 }
