@@ -11,3 +11,4 @@ namespace Software_Lanch.Models
         public string CarrinhoCompraId { get; set; }
     }
 }
+ 
