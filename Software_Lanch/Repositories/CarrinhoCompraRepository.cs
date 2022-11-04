@@ -26,6 +26,28 @@ public class CarrinhoCompraRepository:CarrinhoCompra,ICarrinhoCompraRepository
         var carrinhoCompra=new CarrinhoCompra() { CarrinhoCompraId = carrinhoId };
         return carrinhoCompra;
     }
+    public void RemoverDoCarrinho(Lanch lanche)
+    {
+
+        var carrinhoCompraItem = _context.CarrinhoCompraItens.SingleOrDefault(
+             s => s.Lanch.Id == lanche.Id && s.CarrinhoCompraId == CarrinhoCompraId
+             );
+        if (carrinhoCompraItem is not null)
+        {
+            if (carrinhoCompraItem.Quantidade>1)
+            {
+                carrinhoCompraItem.Quantidade--;
+            }
+            else
+            {
+                _context.CarrinhoCompraItens.Remove(carrinhoCompraItem);
+            }
+        }
+        _context.SaveChanges();
+
+
+
+    }
     public void AdicionarAoCarrinho(Lanch lanch)
     {
         var carrinhoCompraItem = _context.CarrinhoCompraItens.SingleOrDefault(
