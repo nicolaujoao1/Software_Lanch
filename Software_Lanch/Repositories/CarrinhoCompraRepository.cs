@@ -63,7 +63,7 @@ public class CarrinhoCompraRepository
                 Quantidade = 1
             };
             _context.CarrinhoCompraItens.Add(carrinhoCompraItem);
-        }
+        }  
         else
         {
             carrinhoCompraItem.Quantidade++;
