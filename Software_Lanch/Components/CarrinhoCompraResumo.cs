@@ -17,6 +17,7 @@ namespace Software_Lanch.Components
         }
         public IViewComponentResult Invoke()
         {
+            
             var carrinhoCompraItems = _carrinhoCompraRepository.GetCarrinhoCompraItens();
             _carrinhoCompraRepository.CarrinhoCompraItens = carrinhoCompraItems;
             var carrinhoCompraViewModel = new CarrinhoCompraViewModel()
