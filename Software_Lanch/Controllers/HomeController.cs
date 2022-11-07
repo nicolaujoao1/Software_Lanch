@@ -1,21 +1,24 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Software_Lanch.Models;
+using Software_Lanch.Repositories.Interfaces;
+using Software_Lanch.ViewModels;
 using System.Diagnostics;
 
 namespace Software_Lanch.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }
-
+       
+        private readonly ILanchRepository _lanchRepository;
+        public HomeController(ILanchRepository lanchRepository)
+        =>_lanchRepository = lanchRepository;
         public IActionResult Index()
         {
-            return View();
+            var homeViewModel = new HomeViewModel
+            {
+                LanchesPreferidos=_lanchRepository.LanchesPreferidos
+            };
+            return View(homeViewModel);
         }
 
         public IActionResult Privacy()

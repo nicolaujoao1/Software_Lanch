@@ -16,16 +16,7 @@ namespace Software_Lanch.Context
         #endregion
         protected override void OnModelCreating(ModelBuilder mb)
         {
-
-            mb.Entity<Produto>(prop =>
-            {
-                prop.ToTable("tbProduto");
-                prop.HasKey(op => op.Id);
-                prop.Property(op => op.NomeProduto).HasMaxLength(100).IsRequired();
-                prop.Property(op => op.Preco).HasPrecision(10, 2).IsRequired();
-                prop.Property(op=>op.Quantidade);
-            }
-            );
+ 
             mb.Entity<CarrinhoCompraItem>(c =>
             {
                 c.ToTable("tbCarrinhoCompraItem");

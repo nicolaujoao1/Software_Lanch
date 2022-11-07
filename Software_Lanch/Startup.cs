@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Software_Lanch.Context;
+using Software_Lanch.Models;
 using Software_Lanch.Repositories;
 using Software_Lanch.Repositories.Interfaces;
 
@@ -19,9 +20,12 @@ public class Startup
         services.AddDbContext<AppDbContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
         services.AddTransient<ICategoriaRepository, CategoriaRepository>();
         services.AddTransient<ILanchRepository,LancheRepository>();
-
+       
         services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-        
+        //Especial
+        services.AddScoped(sp => CarrinhoCompraRepository.GetCarrinho(sp));
+
+
         services.AddControllersWithViews();
         //Registro dos Middlewares
         services.AddMemoryCache();
