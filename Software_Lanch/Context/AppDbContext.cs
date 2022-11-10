@@ -10,6 +10,8 @@ namespace Software_Lanch.Context
         public DbSet<Categoria> Categorias { get; set; }
         public DbSet<Lanch> Lanchs { get; set; }
         public DbSet<CarrinhoCompraItem> CarrinhoCompraItens { get; set; }
+        public DbSet<Pedido> Pedidos { get; set; }
+        public DbSet<PedidoDetalhe> PedidoDetalhes { get; set; }
         #endregion
         #region Ctor
         public AppDbContext(DbContextOptions<AppDbContext>option):base(option){ }
@@ -43,6 +45,18 @@ namespace Software_Lanch.Context
                 l.Property(p => p.CategoriaId).IsRequired();
                     
             });
+            mb.Entity<Pedido>(l =>
+            {
+                l.ToTable("tbPedido");
+                l.HasKey(l => l.Id);
+            }
+            );
+            mb.Entity<PedidoDetalhe>(l =>
+            {
+                l.ToTable("tbPedidoDetalhe");
+                l.HasKey(l => l.Id);
+            }
+            );
             ////RELAICIONAMENTO 1:N
             //mb.Entity<Lanch>().
             //    HasOne(p => p.Categoria).WithMany(p => p.Lanchs).HasForeignKey(p=>p.CategoriaId);
