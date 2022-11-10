@@ -22,16 +22,20 @@ namespace Software_Lanch.Controllers
             }
             else
             {
-                if(string.Equals(categoria, "Normal", StringComparison.OrdinalIgnoreCase))
-                {
-                    lanches = _lancheRepository.Lanches.Where(l => l.Categoria.CategoriaNome.Equals("Normal"))
-                        .OrderBy(l => l.Id);
-                }
-                else if(string.Equals(categoria, "Natural", StringComparison.OrdinalIgnoreCase))
-                {
-                    lanches = _lancheRepository.Lanches.Where(l => l.Categoria.CategoriaNome.Equals("Natural"))
-                        .OrderBy(l => l.Id);
-                }
+                lanches= _lancheRepository.Lanches.Where(l=>l.Categoria.CategoriaNome==categoria)
+                    .OrderBy(l=>l.Nome);
+                #region Antingo
+                //if(string.Equals(categoria, "Normal", StringComparison.OrdinalIgnoreCase))
+                //{
+                //    lanches = _lancheRepository.Lanches.Where(l => l.Categoria.CategoriaNome.Equals("Normal"))
+                //        .OrderBy(l => l.Id);
+                //}
+                //else
+                //{
+                //    lanches = _lancheRepository.Lanches.Where(l => l.Categoria.CategoriaNome.Equals("Natural"))
+                //        .OrderBy(l => l.Id);
+                //}
+                #endregion
                 categoriaAtual = categoria;
             }
             var lanchesListViewModel = new LanchListViewModel() {
@@ -39,6 +43,11 @@ namespace Software_Lanch.Controllers
                 CategoriaAtual = "Categoria actual"
             };
             return View(lanchesListViewModel);
+        }
+        public IActionResult Details(int Id)
+        {
+            var lanche = _lancheRepository.Lanches.FirstOrDefault(l => l.Id == Id);
+            return View(lanche);    
         }
     }
 }

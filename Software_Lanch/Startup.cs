@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Software_Lanch.Context;
 using Software_Lanch.Models;
 using Software_Lanch.Repositories;
@@ -57,8 +58,18 @@ public class Startup
         app.UseEndpoints(endpoints =>
         {
             endpoints.MapControllerRoute(
+                name:"categoriaFiltro",
+                pattern:"Lanche/{action}/{categoria?}",
+                defaults:new {Controller="Lanche",action="Index"}
+                );
+        });
+
+        app.UseEndpoints(endpoints =>
+        {
+            endpoints.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
+            // endpoints.MapDefaultControllerRoute();
         });
     }
 }

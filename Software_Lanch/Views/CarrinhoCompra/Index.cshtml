@@ -13,7 +13,7 @@
                      <th class="text-center">Lanch</th>
                      <th class="text-center">Preço</th>
                      <th class="text-right">Subtotal</th>
-                     <th></th> 
+                     <th class="text-right">Tarefa</th> 
                  </tr>
              </thead>
              <tbody>
@@ -36,7 +36,7 @@
                             <a asp-controller="CarrinhoCompra"
                            asp-action="RemoverItemDoCarrinhoCompra"
                             asp-roud-id="@item.Lanch.Id">
-                          <img src="~/images/remove.ico">
+                                <img src="~/images/remove.ico" width="20px" height="20px">
                         </a>
                         </td>
                     </tr>

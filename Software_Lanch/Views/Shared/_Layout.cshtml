@@ -21,8 +21,9 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     @await Component.InvokeAsync("CarrinhoCompraResumo")
+                    @await Component.InvokeAsync("CategoriaMenu")
                     <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                    <a class="nav-link text-light" asp-area="" asp-controller="Lanche" asp-action="Index">Lanches</a>
+                    @*<a class="nav-link text-light" asp-area="" asp-controller="Lanche" asp-action="Index">Lanches</a>*@
                     <a class="nav-link text-light" asp-controller="Contacto" asp-action="Index">Contacto</a>
                 </div>
             </div>

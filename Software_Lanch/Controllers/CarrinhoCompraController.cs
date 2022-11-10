@@ -27,10 +27,10 @@ namespace Software_Lanch.Controllers
             };
             return View(carrinhoCompraViewModel);
         }
-        public IActionResult AdicionarItemNoCarrinhoCompra(int lanchId)
+        public IActionResult AdicionarItemNoCarrinhoCompra(int Id)
         {
             var lanchSelecionado = _lanchRepository.Lanches.FirstOrDefault(
-                l => l.Id == lanchId);
+                l => l.Id == Id);
             if(lanchSelecionado is not null)
             {
                 _carrinhoCompraRepository.AdicionarAoCarrinho(lanchSelecionado);

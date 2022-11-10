@@ -1,0 +1,24 @@
+﻿@model Lanch
+
+<div class="container">
+    <div class="row">
+        <div class="card">
+            <div class="text-center">
+                <img src="@Model.ImagemUrl" class="img-fluid" alt=""/>
+            </div>
+            <div class="card-block">
+                <h2 class="card-title">@Model.Nome</h2>
+                <p class="card-text">
+                    <h5>@Model.DescricaoDetalhada</h5>
+                </p>
+                <p class="btn btn-group align-content-lg-end">
+                    <a asp-controller="Lanche" asp-action="Index" class="btn btn-outline-info">Ver todos os Lanches</a>
+                    <a class="btn btn-primary" id="cardButton" asp-controller="CarrinhoCompra" asp-action="AdicionarItemNoCarrinhoCompra"
+                      asp-route-id="@Model.Id">
+                      Adicionar @Model.Nome ao Carrinho
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
