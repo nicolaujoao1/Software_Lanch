@@ -1,4 +1,4 @@
-﻿@model HomeViewModel
+﻿@*@model HomeViewModel
 
 <partial name="_Carrousel"></partial>
 
@@ -10,4 +10,64 @@
     {
         <partial name="_LanchesResumo" for="@lanch"></partial>
     }
+</div>*@
+<div class="row text-center">
+    <h2>Lanches</h2>
+</div>
+
+<div class="container">
+    <section id="sobre">
+        <div class="row justify-content-center">
+            <div class="col-xs-12 col-sm-6 col-md-3 text-center">
+                <img src="~/images/leiaute/icons8-love-50.png" />
+                <h3>Feitos com amor</h3>
+                <p class="text-muted">Fazemos seu lanche com carinho.</p>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-3 text-center">
+                <img src="~/images/leiaute/icons8-get-dressed-50.png" />
+                <h3>Prontos para entrega</h3>
+                <p class="text-muted">Entregamos o seu pedido</p>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-3 text-center">
+                <img src="~/images/leiaute/icons8-desconto-48.png" />
+                <h3>Preços Camaradas </h3>
+                <p class="text-muted">Promoções imperdíveis.</p>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-3 text-center">
+                <img src="~/images/leiaute/icons8-comida-natural-50.png" />
+                <h3>Lanches Naturais</h3>
+                <p class="text-muted">...saudáveis e naturais...</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio">
+        @await Html.PartialAsync("_IndexPartial")
+        @*<partial name="_IndexPartial" />*@
+    </section>
+
+    <br />
+
+    <section id="contato">
+        <div class="row">
+            <div class="col-10 col-md-5 col-lg-5 offset-1" style="color: black">
+                <h4> &copy; 2021 - LanchesMac</h4>
+                <p class="text-justify">
+                    Aqui você encontra aquele lanche gostoso que da água na boca.
+                    Aquela sobremesa saborosa e para acompanhar a sua bebida preferida.
+                    E se você é vegetariano também vai encontrar o lanche, sobremesa e bebida do seu gosto.
+                </p>
+            </div>
+
+            <div class="col-10 col-md-5 col-lg-5 offset-1" style="color: black">
+                <h4>Tem alguma dúvida ?</h4>
+                <ul class="list-unstyled">
+                    <li class="py-1"> Av. Bueno de Andrade, 56 Setor-2 Quadra-7</li>
+                    <li class="py-1"> +55- 999 9123 502</li>
+                    <li class="py-1"> <a href="lanchesmac@hotmail.com" style="color: blue">lanchesmac@hotmail.com</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
 </div>

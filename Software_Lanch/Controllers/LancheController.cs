@@ -49,5 +49,30 @@ namespace Software_Lanch.Controllers
             var lanche = _lancheRepository.Lanches.FirstOrDefault(l => l.Id == Id);
             return View(lanche);    
         }
+        public IActionResult Search(string searchString)
+        {
+            IEnumerable<Lanch> lanches;
+            string categoriaAtual=string.Empty;
+            if (string.IsNullOrEmpty(searchString))
+            {
+                lanches = _lancheRepository.Lanches.OrderBy(p=>p.Id);
+                categoriaAtual = "Todos os lanches";
+            }
+            else
+            {
+                lanches = _lancheRepository.Lanches.Where(l => l.Nome.ToLower().Contains(searchString.ToLower()))
+                    .OrderBy(p => p.Id);
+                categoriaAtual = lanches.Any() ? "Lanches" : "Nenhum resultado foi encontrado";
+            }
+            return View
+            (
+                nameof(Index),
+                new LanchListViewModel 
+                {
+                    Lanches=lanches, 
+                    CategoriaAtual=categoriaAtual
+                }
+           );
+        }
     }
 }

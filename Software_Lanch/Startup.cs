@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Software_Lanch.Context;
 using Software_Lanch.Models;
@@ -19,8 +20,15 @@ public class Startup
     public void ConfigureServices(IServiceCollection services)
     {
         services.AddDbContext<AppDbContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+        
+        services.AddIdentity<IdentityUser, IdentityRole>()
+            .AddEntityFrameworkStores<AppDbContext>()
+            .AddDefaultTokenProviders();
+        
+        
         services.AddTransient<ICategoriaRepository, CategoriaRepository>();
         services.AddTransient<ILanchRepository,LancheRepository>();
+        services.AddTransient<IPedidoRepository, PedidoRepository>();
        
         services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         //Especial
@@ -53,6 +61,7 @@ public class Startup
         //Uso de Session
         app.UseSession();
 
+        app.UseAuthentication();
         app.UseAuthorization();
 
         app.UseEndpoints(endpoints =>
