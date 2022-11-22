@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Software_Lanch.Models;
 using Software_Lanch.Repositories;
 using Software_Lanch.Repositories.Interfaces;
@@ -15,6 +16,7 @@ namespace Software_Lanch.Controllers
             _pedidoRepository = pedidoRepository;
             _carrinhoCompraRepository = carrinhoCompraRepository;
         }
+        [Authorize]
         [HttpGet]
         public IActionResult Checkout()
         {
@@ -23,6 +25,7 @@ namespace Software_Lanch.Controllers
         [HttpGet]
         public IActionResult CheckoutCompleto() => View();
 
+        [Authorize]
         [HttpPost]
         public IActionResult Checkout(Pedido pedido)
         {

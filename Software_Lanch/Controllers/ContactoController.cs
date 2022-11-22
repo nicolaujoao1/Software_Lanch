@@ -6,7 +6,9 @@ namespace Software_Lanch.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            if(User.Identity.IsAuthenticated)
+                return View();
+            return RedirectToAction("Login", "Account");
         }
     }
 }
