@@ -1,0 +1,30 @@
+﻿@model Categoria
+
+@{
+    ViewData["Title"] = "Registrar nova categoria";
+}
+<h2>@ViewData["Title"]</h2>
+<form asp-action="Create" asp-area="Admin" asp-controller="AdminCategorias">
+    <div class="form-horizontal">
+        <hr />
+        <div class="form-group">
+            <label asp-for="CategoriaNome" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="CategoriaNome" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Descricao" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Descricao" class="form-control" />
+            </div>
+        </div>
+        <div style="margin-bottom:5px;"></div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Criar" class="btn btn-success" />
+                <a asp-action="Index" class="btn btn-info">Voltar</a>
+            </div>
+        </div>
+    </div>
+</form>

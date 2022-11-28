@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Categoria>
+
+@{
+    ViewData["Title"] = "Página Inicial";
+}
+
+
+<div class="Container">
+    <div>
+        <a asp-area="Admin" asp-controller="AdminCategorias" asp-action="Create" class="btn btn-primary">Criar novo</a>
+    </div>
+    
+    <table class="table table-striped">
+      
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Categoria</th>
+                <th>Descrição</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.CategoriaNome</td>
+                    <td>@item.Descricao</td>
+                    <td>
+                        <a class="btn btn-dark" asp-action="Edit" asp-controller="AdminCategorias" asp-area="Admin" asp-route-id="@item.Id">
+                            Edit
+                        </a>|
+                        <a class="btn btn-primary" asp-action="Details" asp-controller="AdminCategorias" asp-area="Admin" asp-route-id="@item.Id">
+                            Details
+                        </a>|
+                        <a class="btn btn-danger" asp-action="Delete" asp-controller="AdminCategorias" asp-area="Admin" asp-route-id="@item.Id">
+                            Delete
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

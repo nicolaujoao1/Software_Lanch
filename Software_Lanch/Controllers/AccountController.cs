@@ -50,6 +50,7 @@ namespace Software_Lanch.Controllers
                 var result = await _userManager.CreateAsync(user, loginViewModel.Password);
                 if (result.Succeeded)
                 {
+                    await _userManager.AddToRoleAsync(user, "Member");
                     return RedirectToAction(nameof(Login), "Account");
                 }
                 else
@@ -69,6 +70,7 @@ namespace Software_Lanch.Controllers
             await _signInManager.SignOutAsync();
             return RedirectToAction(nameof(Index), "Home");
         }
+        public IActionResult AccessDenied() => View();
         
     }
 }

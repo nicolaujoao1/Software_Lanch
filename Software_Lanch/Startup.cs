@@ -5,6 +5,7 @@ using Software_Lanch.Context;
 using Software_Lanch.Models;
 using Software_Lanch.Repositories;
 using Software_Lanch.Repositories.Interfaces;
+using Software_Lanch.Services;
 
 namespace Software_Lanch;
 public class Startup
@@ -29,6 +30,14 @@ public class Startup
         services.AddTransient<ICategoriaRepository, CategoriaRepository>();
         services.AddTransient<ILanchRepository,LancheRepository>();
         services.AddTransient<IPedidoRepository, PedidoRepository>();
+        services.AddScoped<ISeedUserRoleInitial, SeedUserRoleInitial>();
+        services.AddAuthorization(auth =>
+        {
+            auth.AddPolicy("Admin", policy =>
+            {
+                policy.RequireRole("Admin");
+            });
+        });
        
         services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         //Especial
@@ -42,7 +51,7 @@ public class Startup
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+    public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ISeedUserRoleInitial seedUserRoleInitial)
     {
         if (env.IsDevelopment()) 
         {
@@ -58,6 +67,9 @@ public class Startup
         app.UseStaticFiles();
 
         app.UseRouting();
+        seedUserRoleInitial.SeedRoles();
+        seedUserRoleInitial.SeedUsers();
+
         //Uso de Session
         app.UseSession();
 
