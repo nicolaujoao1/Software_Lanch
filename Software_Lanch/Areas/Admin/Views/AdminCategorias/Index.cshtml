@@ -1,15 +1,23 @@
-﻿@model IEnumerable<Categoria>
+﻿@model ReflectionIT.Mvc.Paging.PagingList<Categoria>
 
 @{
     ViewData["Title"] = "Página Inicial";
 }
 
 
-<div class="Container">
+
+    <div class="Container">
+        <form method="get" class="form-inline">
+            <input name="filter" class="form-control" placeholder="Filtro..." value="@Model.RouteValue["Filter"]" />
+            <button type="submit" class="btn btn-info">
+                <span class="glyphicon glyphicon-search" aria-hidden="true">
+                    Procurar
+                </span>
+            </button>
+        </form>
     <div>
         <a asp-area="Admin" asp-controller="AdminCategorias" asp-action="Create" class="btn btn-primary">Criar novo</a>
     </div>
-    
     <table class="table table-striped">
       
         <thead>
@@ -43,4 +51,7 @@
             }
         </tbody>
     </table>
+    <nav aria-label="Products navigation example">
+        <vc:pager paging-list="@Model" />
+    </nav>
 </div>

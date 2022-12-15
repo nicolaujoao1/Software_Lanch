@@ -1,0 +1,77 @@
+﻿@model Lanch
+
+@{
+    ViewData["Title"] = "Editar lanch";
+}
+<h2>@ViewData["Title"]</h2>
+<form asp-action="Edit" asp-area="Admin" asp-controller="AdminLanches">
+    <div class="form-horizontal">
+        <hr />
+        <div class="form-group">
+            <label asp-for="Nome" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Nome" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="DescricaoCurta" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="DescricaoCurta" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="DescricaoDetalhada" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="DescricaoDetalhada" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Preco" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Preco" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="ImagemUrl" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="ImagemUrl" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="ImagemThumbnailURL" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="ImagemThumbnailURL" class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group">
+
+            <div class="col-md-4">
+                <input type="checkbox" asp-for="IsLanchPreferido" />
+                <label>É preferido?</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                <input type="checkbox" asp-for="EmEstoque" />
+                <label>Em stoque?</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="CategoriaId"></label>
+            <div class="col-md-10">
+                <input asp-for="CategoriaId" class="form-control" />
+            </div>
+        </div>
+
+
+        <div style="margin-bottom:5px;"></div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Actualizar" class="btn btn-success" />
+                <a asp-action="Index" class="btn btn-info">Voltar</a>
+            </div>
+        </div>
+    </div>
+</form>

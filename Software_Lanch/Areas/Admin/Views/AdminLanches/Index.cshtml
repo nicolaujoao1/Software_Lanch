@@ -1,0 +1,62 @@
+﻿@model ReflectionIT.Mvc.Paging.PagingList<Lanch>
+@{
+    ViewData["Title"] = "Página Inicial";
+}
+<div class="Container">
+    <form method="get" class="form-inline">
+        <input name="filter" class="form-control" placeholder="Filtro..." value="@Model.RouteValue["Filter"]"/>
+        <button type="submit" class="btn btn-info" >
+            <span class="glyphicon glyphicon-search" aria-hidden="true"hi>
+                Procurar
+            </span>
+        </button>
+    </form>
+    <div>
+        <a asp-area="Admin" asp-controller="AdminLanches" asp-action="Create" class="btn btn-primary">Criar novo</a>
+    </div>
+
+    <table class="table table-striped">
+
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Produto</th>
+                <th>Descrição curta</th>
+                <th>Descrição longa</th>
+                <th>Preço</th>
+                <th>Categoria</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Nome</td>
+                    <td>@item.DescricaoCurta</td>
+                    <td>@item.DescricaoDetalhada</td>
+                    <td>@item.Preco.ToString("C")</td>
+                    <td>@item.Categoria.CategoriaNome</td>
+                    <td class="row">
+                        <a class="btn btn-dark" asp-action="Edit" asp-controller="AdminLanches" asp-area="Admin" asp-route-id="@item.Id">
+                            Edit
+                        </a>
+                        <a class="btn btn-primary" asp-action="Details" asp-controller="AdminLanches" asp-area="Admin" asp-route-id="@item.Id">
+                            Details
+                        </a>
+                        <a class="btn btn-danger" asp-action="Delete" asp-controller="AdminLanches" asp-area="Admin" asp-route-id="@item.Id">
+                            Delete
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <p><h4>Total de Lanches:</h4>@Model.TotalRecordCount</p>
+    <div>
+        <vc:pager paging-list="@Model"></vc:pager>
+    </div>
+
+</div>

@@ -20,7 +20,7 @@ namespace Software_Lanch.Repositories
                 await _context.SaveChangesAsync();
             }
         }
-        
+        public IEnumerable<Categoria> GetCategorias() => _context.Categorias.AsNoTracking().ToList();
         public async Task Update(Categoria categoria)
         {
             if(categoria is not null)

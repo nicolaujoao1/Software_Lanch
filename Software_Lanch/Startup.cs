@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using ReflectionIT.Mvc.Paging;
 using Software_Lanch.Context;
 using Software_Lanch.Models;
 using Software_Lanch.Repositories;
@@ -45,6 +46,14 @@ public class Startup
 
 
         services.AddControllersWithViews();
+
+        services.AddPaging(option =>
+        {
+            option.ViewName = "Bootstrap4";
+            option.PageParameterName = "pageindex";
+
+        });
+
         //Registro dos Middlewares
         services.AddMemoryCache();
         services.AddSession();

@@ -4,6 +4,7 @@ namespace Software_Lanch.Repositories.Interfaces
 {
     public interface ICategoriaRepository
     {
+        IEnumerable<Categoria>GetCategorias();
         IEnumerable<Categoria> Categorias { get; }
         Task Create(Categoria categoria);
         Task Update(Categoria categoria);

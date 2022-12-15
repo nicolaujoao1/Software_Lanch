@@ -1,6 +1,9 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using ReflectionIT.Mvc.Paging;
 using Software_Lanch.Models;
+using Software_Lanch.Repositories;
 using Software_Lanch.Repositories.Interfaces;
 
 namespace Software_Lanch.Areas.Admin.Controllers
@@ -15,11 +18,23 @@ namespace Software_Lanch.Areas.Admin.Controllers
             _categoryRepository = categoryRepository;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(string filter, int pageindex = 1, string sort = "CategoriaNome")
         {
-            var categorias = _categoryRepository.Categorias;
-            return View(categorias);
+            var resultado = _categoryRepository.Categorias.AsQueryable().AsNoTracking();
+            if (!string.IsNullOrEmpty(filter))
+            {
+                resultado = resultado.Where(l => l.CategoriaNome.Contains(filter));
+            }
+            var model =  PagingList.Create(resultado, 5, pageindex, sort,"CategoriaNome");
+         
+            model.RouteValue = new RouteValueDictionary { { "filter", filter } };
+            return View(model);
         }
+        //public IActionResult Index()
+        //{
+        //    var categorias = _categoryRepository.Categorias;
+        //    return View(categorias);
+        //}
 
         #region Create
         public IActionResult Create() => View();
