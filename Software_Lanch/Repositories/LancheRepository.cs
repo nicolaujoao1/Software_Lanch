@@ -36,7 +36,7 @@ namespace Software_Lanch.Repositories
         public async Task<Lanch> GetLancheById(int lancheId)
         =>await _context.Lanchs.FirstOrDefaultAsync(l => l.Id == lancheId);
 
-        public IEnumerable<Lanch> GetLanchs() => _context.Lanchs.Include(p=>p.Categoria).AsNoTracking();
+        public IEnumerable<Lanch> GetLanchs() => _context.Lanchs.Include(p=>p.Categoria).OrderBy(l=>l.Id).AsNoTracking();
 
         public async Task Update(Lanch lanch)
         {

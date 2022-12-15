@@ -6,54 +6,51 @@
 @*<h2>@ViewData["Title"]</h2>*@
 <form asp-action="Create">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-    <div class="form-group">
+    <div class="form-group" style="margin-top:5px;">
         <label asp-for="Nome" class="control-label"></label>
         <input asp-for="Nome" class="form-control" />
         <span asp-validation-for="Nome" class="text-danger"></span>
     </div>
-    <div class="form-group">
+    <div class="form-group" style="margin-top:5px;">
         <label asp-for="DescricaoCurta" class="control-label"></label>
         <input asp-for="DescricaoCurta" class="form-control" />
         <span asp-validation-for="DescricaoCurta" class="text-danger"></span>
     </div>
-    <div class="form-group">
+    <div class="form-group" style="margin-top:5px;">
         <label asp-for="DescricaoDetalhada" class="control-label"></label>
         <input asp-for="DescricaoDetalhada" class="form-control" />
         <span asp-validation-for="DescricaoDetalhada" class="text-danger"></span>
     </div>
-    <div class="form-group">
+    <div class="form-group" style="margin-top:5px;">
         <label asp-for="Preco" class="control-label"></label>
         <input asp-for="Preco" class="form-control" />
         <span asp-validation-for="Preco" class="text-danger"></span>
     </div>
-    <div class="form-group">
+    <div class="form-group" style="margin-top:5px;">
         <label asp-for="ImagemUrl" class="control-label"></label>
         <input asp-for="ImagemUrl" class="form-control" />
         <span asp-validation-for="ImagemUrl" class="text-danger"></span>
     </div>
-    <div class="form-group">
+    <div class="form-group" style="margin-top:5px;">
         <label asp-for="ImagemThumbnailURL" class="control-label"></label>
         <input asp-for="ImagemThumbnailURL" class="form-control" />
         <span asp-validation-for="ImagemThumbnailURL" class="text-danger"></span>
     </div>
-    <div class="form-group form-check">
+    <div class="form-group form-check" style="margin-top:5px;">
         <label class="form-check-label">
             <input class="form-check-input" asp-for="IsLanchPreferido" /> @Html.DisplayNameFor(model => model.IsLanchPreferido)
         </label>
     </div>
-    <div class="form-group form-check">
+    <div class="form-group form-check" style="margin-top:5px;">
         <label class="form-check-label">
             <input class="form-check-input" asp-for="EmEstoque" /> @Html.DisplayNameFor(model => model.EmEstoque)
         </label>
     </div>
-    <div class="form-group">
-        <label asp-for="CategoriaId" class="control-label"></label>
-       
-            <select asp-for="CategoriaId" class="form-control" asp-items="ViewBag.CategoriaId"></select>
-        
-       
+    <div class="form-group" style="margin-top:5px;">
+        <label class="control-label">Categorias</label>
+        <select asp-for="CategoriaId" class="form-control" asp-items="ViewBag.CategoriaId"></select>
     </div>
-    <div class="form-group">
+    <div class="form-group" style="margin-top:5px;">
         <input type="submit" value="Criar" class="btn btn-primary" />
     </div>
 </form>

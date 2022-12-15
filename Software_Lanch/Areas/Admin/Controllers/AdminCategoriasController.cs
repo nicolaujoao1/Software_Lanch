@@ -17,7 +17,7 @@ namespace Software_Lanch.Areas.Admin.Controllers
         {
             _categoryRepository = categoryRepository;
         }
-
+        #region Index
         public IActionResult Index(string filter, int pageindex = 1, string sort = "CategoriaNome")
         {
             var resultado = _categoryRepository.Categorias.AsQueryable().AsNoTracking();
@@ -25,8 +25,8 @@ namespace Software_Lanch.Areas.Admin.Controllers
             {
                 resultado = resultado.Where(l => l.CategoriaNome.Contains(filter));
             }
-            var model =  PagingList.Create(resultado, 5, pageindex, sort,"CategoriaNome");
-         
+            var model = PagingList.Create(resultado, 5, pageindex, sort, "CategoriaNome");
+
             model.RouteValue = new RouteValueDictionary { { "filter", filter } };
             return View(model);
         }
@@ -35,7 +35,7 @@ namespace Software_Lanch.Areas.Admin.Controllers
         //    var categorias = _categoryRepository.Categorias;
         //    return View(categorias);
         //}
-
+        #endregion
         #region Create
         public IActionResult Create() => View();
         [HttpPost]
@@ -50,7 +50,7 @@ namespace Software_Lanch.Areas.Admin.Controllers
         }
         #endregion
         #region Edit
-        [HttpGet("{id:int}")]
+        //[HttpGet("{id:int}")]
         public async Task<IActionResult> Edit(int id)
         {
             var categoria=await _categoryRepository.GetCategoriaById(id);
@@ -58,7 +58,7 @@ namespace Software_Lanch.Areas.Admin.Controllers
                 return View(categoria);
             return RedirectToAction(nameof(Index), "AdminCategorias");
         }
-        [HttpPost("{id:int}")]
+        [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, Categoria categoria)
         {

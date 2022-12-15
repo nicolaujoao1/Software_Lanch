@@ -1,18 +1,20 @@
-﻿@model ReflectionIT.Mvc.Paging.PagingList<Lanch>
+﻿@model ReflectionIT.Mvc.Paging.PagingList<Pedido>
 @{
     ViewData["Title"] = "Página Inicial";
 }
+
+
 <div class="Container">
     <form method="get" class="form-inline">
         <input name="filter" class="form-control" placeholder="Filtro..." value="@Model.RouteValue["Filter"]" />
         <div style="display:flex; flex-direction:row-reverse;justify-content:space-between; margin-top:5px;">
-            <button type="submit" class="btn btn-info">
+            <button  type="submit" class="btn btn-info">
                 <span class="glyphicon glyphicon-search" aria-hidden="true">
                     Procurar
                 </span>
             </button>
             <div>
-                <a asp-area="Admin" asp-controller="AdminLanches" asp-action="Create" class="btn btn-primary">Criar novo</a>
+                <a asp-area="Admin" asp-controller="AdminPedidos" asp-action="Create" class="btn btn-primary">Criar novo</a>
             </div>
         </div>
     </form>
@@ -21,11 +23,15 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Produto</th>
-                <th>Descrição curta</th>
-                <th>Descrição longa</th>
-                <th>Preço</th>
-                <th>Categoria</th>
+                <th>Nome</th>
+                <th>Endereço</th>
+                <th>Cep</th>
+                <th>Estado</th>
+                <th>Cidade</th>
+                <th>Telefone</th>
+                <th>Email</th>
+                <th>Pedido Total</th>
+                <th>Pedido Enviado</th>
                 <th></th>
             </tr>
         </thead>
@@ -36,10 +42,14 @@
                 <tr>
                     <td>@item.Id</td>
                     <td>@item.Nome</td>
-                    <td>@item.DescricaoCurta</td>
-                    <td>@item.DescricaoDetalhada</td>
-                    <td>@item.Preco.ToString("C")</td>
-                    <td>@item.Categoria.CategoriaNome</td>
+                    <td>@item.Endereco1 - @item.Endereco2</td>
+                    <td>@item.Cep</td>
+                    <th>@item.Estado</th>
+                    <th>@item.Cidade</th>
+                    <th>@item.Telefone</th>
+                    <th>@item.Email</th>
+                    <td>@item.PedidoTotal.ToString("C")</td>
+                    <td>@item.PedidoEnviado</td>
                     <td class="row">
                         <a class="btn btn-dark" asp-action="Edit" asp-controller="AdminLanches" asp-area="Admin" asp-route-id="@item.Id">
                             Edit
@@ -55,7 +65,7 @@
             }
         </tbody>
     </table>
-    <h4>Total de Lanches:@Model.TotalRecordCount</h4> 
+    <h4>Total de Lanches:@Model.TotalRecordCount</h4>
     <div>
         <vc:pager paging-list="@Model"></vc:pager>
     </div>

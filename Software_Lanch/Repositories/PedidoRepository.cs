@@ -1,4 +1,5 @@
-﻿using Software_Lanch.Context;
+﻿using Microsoft.EntityFrameworkCore;
+using Software_Lanch.Context;
 using Software_Lanch.Models;
 using Software_Lanch.Repositories.Interfaces;
 
@@ -13,6 +14,8 @@ namespace Software_Lanch.Repositories
             _context=appDbContext;  
             _carrinhoCompraRepository=carrinhoCompraRepository; 
         }
+        public async Task<IEnumerable<Pedido>> GetPedidosAsync()
+         => await _context.Pedidos.AsNoTracking().ToListAsync();
         public void CriarPedido(Pedido pedido)
         {
             pedido.PedidoEnviado = DateTime.Now;

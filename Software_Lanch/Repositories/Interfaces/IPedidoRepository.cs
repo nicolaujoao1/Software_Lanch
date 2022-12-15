@@ -5,5 +5,6 @@ namespace Software_Lanch.Repositories.Interfaces
     public interface IPedidoRepository
     {
         void CriarPedido(Pedido pedido);
+        Task<IEnumerable<Pedido>> GetPedidosAsync();
     }
 }
