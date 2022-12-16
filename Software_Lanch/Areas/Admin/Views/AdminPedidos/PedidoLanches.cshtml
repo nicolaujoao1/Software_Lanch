@@ -1,0 +1,33 @@
+﻿@model PedidoLanchViewModel
+@{
+    ViewData["Title"] = "PedidoLanches";
+    decimal totalPedidos = 0;
+}
+<h1>Lanches do Pedido</h1>
+<hr />
+<h3>Pedido      :@Html.DisplayFor(model=>Model.Pedido.Id)</h3>
+<h3>Cliente     :@Html.DisplayFor(model=>Model.Pedido.Nome)</h3>
+<h3>Data        :@Html.DisplayFor(model=>Model.Pedido.PedidoEnviado)</h3>
+<h3>Entrega     :@Html.DisplayFor(model=>Model.Pedido.PedidoEntregueEm)</h3>
+
+<table class="table">
+    @foreach (var item in Model.Pedido.PedidoItens)
+    {
+        totalPedidos += (item.Lanche.Preco * item.Quantidade);
+        <tr>
+            <td class="align-right">@Html.DisplayFor(model=>item.Lanche.Nome)</td>
+            <td class="align-right">
+                <img src="@item.Lanche.ImagemUrl" class="img-fluid" height="150" width="150">
+            </td>
+            <td class="align-right">@Html.DisplayFor(model=>item.Lanche.Preco)</td>
+            <td class="align-right">@Html.DisplayFor(model=>item.Quantidade)</td>
+        </tr>
+    }
+    <tr>
+        <td colspan="2">&nbsp;</td>
+        <td align="right">
+            <h3>Total Pedido:@totalPedidos.ToString("C")</h3>
+        </td>
+    </tr>
+</table>
+<a asp-action="Index"  class="btn btn-outline-info">Voltar</a>

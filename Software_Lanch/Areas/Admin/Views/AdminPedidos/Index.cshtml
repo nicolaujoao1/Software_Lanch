@@ -51,15 +51,19 @@
                     <td>@item.PedidoTotal.ToString("C")</td>
                     <td>@item.PedidoEnviado</td>
                     <td class="row">
-                        <a class="btn btn-dark" asp-action="Edit" asp-controller="AdminLanches" asp-area="Admin" asp-route-id="@item.Id">
+                        <a class="btn btn-dark" asp-action="Edit" style="width:20px;" asp-controller="AdminPedidos" asp-area="Admin" asp-route-id="@item.Id">
                             Edit
                         </a>
-                        <a class="btn btn-primary" asp-action="Details" asp-controller="AdminLanches" asp-area="Admin" asp-route-id="@item.Id">
+                        <a class="btn btn-primary" asp-action="Details" style="width:20px;" asp-controller="AdminPedidos" asp-area="Admin" asp-route-id="@item.Id">
                             Details
                         </a>
-                        <a class="btn btn-danger" asp-action="Delete" asp-controller="AdminLanches" asp-area="Admin" asp-route-id="@item.Id">
+                        <a class="btn btn-danger" asp-action="Delete" style="width:20px;" asp-controller="AdminPedidos" asp-area="Admin" asp-route-id="@item.Id">
                             Delete
                         </a>
+                        <a class="btn btn-danger" asp-action="PedidoLanches" style="width:20px;" asp-controller="AdminPedidos" asp-area="Admin" asp-route-id="@item.Id">
+                            Ver Itens
+                        </a>
+                       
                     </td>
                 </tr>
             }
